@@ -56,6 +56,13 @@ Weak criteria ("make it work") require constant clarification. Strong criteria l
 - If a check fails, say so with the output - don't paper over it.
 - Loop: fix → re-verify → repeat until the Plan's criteria pass.
 
+**External cross-model review (교차검증).** 자기검증은 같은 맹점을 공유한다 — 같은 모델이 쓴 코드를 같은 모델이 보면 자기 버그가 잘 안 보인다. 비자명한 변경은 Plan 체크를 통과한 뒤 **독립 모델(Codex)** 에게 diff를 read-only로 리뷰시킨다(`/codex-review`).
+
+- 리뷰어는 **다른 모델**이고 **코드를 수정하지 않는다** — findings만 구조화(JSON)해 반환한다.
+- 각 finding을 **valid / invalid+근거 / deferred 로 triage**한다. 근거 없이 반영하지 않는다(맹목 수용 금지, "push back when warranted").
+- valid만 반영 → 자체 체크 재실행 → 재리뷰. **라운드 상한 3**, 살아남는 critical/high finding 0건이면 통과.
+- 반영의 최종 판단은 전적으로 Claude에 있다. Codex는 조언자이지 결정자가 아니다.
+
 ## Phase 4 — Commit (커밋)
 
 > **막는 실패:** 승인 없이 임의로 스테이징·커밋해 되돌리기 어려운 히스토리를 만들고, 형식이 제각각이라 나중에 읽기 힘든 커밋 로그.

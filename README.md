@@ -10,7 +10,7 @@ Claude Code를 **어떻게 길들여 쓰는가**에 대한 쇼케이스. 실제 
 |---|---|---|
 | 무엇 | 에이전트의 **행동·컨텍스트·출력**을 계약으로 고정 | 반복·판단 작업을 **자율·스케줄**로 위임 |
 | 질문 | "어떻게 일하게 만들 것인가" | "사람 없이 안전하게 돌게 만들 것인가" |
-| 이 repo | 전역 CLAUDE.md, 커스텀 스킬 2종 | hankyung 스케줄 루틴 |
+| 이 repo | 전역 CLAUDE.md, 커스텀 스킬 2종 | hankyung 스케줄 루틴, codex 교차검증 루프 |
 
 ## 산출물
 
@@ -20,6 +20,7 @@ Claude Code를 **어떻게 길들여 쓰는가**에 대한 쇼케이스. 실제 
 | [`skills/heading-correction/`](skills/heading-correction/) | 정밀 반복작업의 안정화 | 텍스트로 못 푸는 판단을 **PDF 시각 검증 루프**로 확정 + 상태 추적 |
 | [`skills/pr-code-review/`](skills/pr-code-review/) | LLM 출력의 결정론화 | 리뷰를 "부탁"이 아니라 **출력 계약(스키마)**으로 강제 |
 | [`loop/hankyung/`](loop/hankyung/) | 자율 루틴 설계 | 스케줄·기준 위임·**멱등성**·출력 스키마 |
+| [`loop/codex-review/`](loop/codex-review/) | 교차모델 검증 루프 | 자기검증의 맹점을 **독립 모델(Codex) 리뷰**로 보완, 지적을 valid/invalid로 **triage**해 맹목 반영 방지 + 라운드 상한으로 무한루프 차단 |
 
 ## 읽는 법
 
